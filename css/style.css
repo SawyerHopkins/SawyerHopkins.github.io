@@ -965,6 +965,16 @@
 					color: #51C1E0;
 				}
 
+	#sidecart
+	{
+		text-align:justify;
+	}
+		#sidecart .sideimg
+		{
+			float: left;
+			width: 33%;
+			margin: 10px;
+		}
 	#logo
 	{
 		position: relative;

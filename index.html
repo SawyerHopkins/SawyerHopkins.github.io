@@ -16,7 +16,7 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-panels.min.js"></script>
 		<script src="js/init.js"></script>
-		<script type="text/javascript">window.location.hash = '#img1'</script>
+		<script type="text/javascript">window.location.hash = '#img1'; window.location.hash = '#top'</script>
 		<link rel="stylesheet" href="css/custom.css" />
 		<noscript>
 			<link rel="stylesheet" href="css/skel-noscript.css" />
@@ -45,10 +45,11 @@
 						<nav id="nav">
 							<ul>
 								<li><a href="#top" id="top-link" class="skel-panels-ignoreHref"><span class="fa fa-home">About Me</span></a></li>
-								<li><a href="#work" id="work-link" class="skel-panels-ignoreHref"><span class="fa fa-try">Research And Employment</span></a></li>
+								<li><a href="#work" id="work-link" class="skel-panels-ignoreHref"><span class="fa fa-flask">Research And Employment</span></a></li>
 								<li><a href="#yap" id="yap-link" class="skel-panels-ignoreHref"><span style="padding-left:5.0em; font-size:0.6em">Yoke Khin Yap Research Group</span></a></li>
 								<li><a href="#ta" id="ta-link" class="skel-panels-ignoreHref"><span style="padding-left:5.0em; font-size:0.6em">MTU Teaching Assistant</span></a></li>
-								<li><a href="#media" id="about-link" class="skel-panels-ignoreHref"><span class="fa fa-user">Media</span></a></li>
+								<li><a href="#projects" id="about-link" class="skel-panels-ignoreHref"><span class="fa fa-bug">Projects</span></a></li>
+								<li><a href="#media" id="about-link" class="skel-panels-ignoreHref"><span class="fa fa-film">Media</span></a></li>
 							</ul>
 						</nav>
 						
@@ -58,9 +59,11 @@
 
 					<!-- Social Icons -->
 						<ul class="icons">
-							<li><a href="https://linkedin.com/in/sawyerhopkins" class="fa fa-linkedin-square solo"><span>LinkedIn</span></a></li>
+							<li><a href="https://www.facebook.com/sshopkin" class="fa fa-facebook solo"><span>Facebook</span></a></li>
+							<li><a href="http://www.linkedin.com/in/sawyerhopkins" class="fa fa-linkedin solo"><span>LinkedIn</span></a></li>
 							<li><a href="https://github.com/SawyerHopkins" class="fa fa-github solo"><span>Github</span></a></li>
-							<li><a href="mailto:sshopkin@mtu.edu" class="fa fa-envelope solo"><span>Email</span></a></li>
+							<li><a href="mailto:sawyer@sawyerhopkins.com" class="fa fa-envelope solo"><span>Email</span></a></li>
+							<li><a href="cv.pdf" class="fa fa-pencil-square-o solo"><span>CV</span></a></li>
 						</ul>
 				
 				</div>
@@ -108,9 +111,29 @@
 
 						</div>
 					</section>
+					
+				<!-- Projects History -->
+					<section id="projects" class="three">
+						<div class="container">
+					
+							<header>
+								<h2>Projects</h2>
+							</header>
+							
+							<header id="yap">
+								<h3>SciLib</h3>
+							</header>
+
+							<div id="sidecart">
+								<img class="sideimg" src="images/scilib.png" alt="" />
+								SciLib is a numerical analysis and computation engine created using C#, F#, and XNA. This project started as an experiment to explore the logic needed to perform generic N-Space calculations while also learning the oddities of Microsoft's new scientific programming language F#. Later I found that having this N-Space computational engine could be very useful for various elements of my research and course work. Today SciLib is a compilation of various scientific and mathematical tools I have built using this computational engine and includes basic mathematics, integration, RK4 analysis, and 3D plotting amongst various other tools. The source code is currently available on my GitHub which is accessible via the social links on the left.
+							</div>
+							
+						</div>
+					</section>
 
 				<!-- Media -->
-					<section id="media" class="three">
+					<section id="media" class="four">
 						<div class="container">
 
 							<header>
