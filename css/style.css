@@ -135,7 +135,7 @@
 	
 	p, ul, ol, dl, table
 	{
-		margin-bottom: 2em;
+		margin-bottom: 0em;
 	}
 
 	br.clear
@@ -1068,6 +1068,66 @@
 							{
 								color: #51C1E0;
 							}
+							
+	#nav2
+	{
+	}
+	
+		#nav2 ul
+		{
+		}
+		
+			#nav2 ul li
+			{
+			}
+			
+				#nav2 ul li a
+				{
+					display: block;
+					padding: 0.5em 1.5em 0.5em 1.5em;
+					color: rgba(255,255,255,0.5);
+					text-decoration: none;
+					outline: 0;
+					border: 0;
+					-moz-transition: none;
+					-webkit-transition: none;
+					-o-transition: none;
+					-ms-transition: none;
+					transition: none;
+				}
+				
+					#nav2 ul li a span
+					{
+						position: relative;
+						display: block;
+						font-size: 0.8em;
+					}
+					
+						#nav2 ul li a span:before
+						{
+							position: absolute;
+							left: 0;
+							color: #41484c;
+							text-align: center;
+							width: 1.25em;
+							line-height: 1.75em;
+						}
+
+					#nav2 ul li a.active
+					{
+						background: rgba(0,0,0,0.15);
+						box-shadow: inset 0 0 0.25em 0 rgba(0,0,0,0.125);
+						color: #fff;
+					}
+
+						#nav2 ul li a.active span
+						{
+						}
+
+							#nav2 ul li a.active span:before
+							{
+								color: #51C1E0;
+							}							
 
 /*********************************************************************************/
 /* Footer                                                                        */
