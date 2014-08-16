@@ -1,0 +1,50 @@
+---
+layout: default
+title: SawyerHopkins - Blog
+---
+<!-- Intro -->
+	<section id="top" class ="three">
+		<header><h2>Blog Posts</h2></header>
+	</section>
+
+	{% for post in paginator.posts %}
+		{% assign ind = forloop.index | modulo: 2 %}
+		
+		{% if forloop.index > 1 %}
+			</section>
+		{% endif %}
+		{% if ind == 1%}
+			<section id="post{{ forloop.index }}"" class="two">
+		{% else %}
+			<section id="post{{ forloop.index }}" class="three">
+		{% endif %}
+			<header>
+				<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+			</header>
+		
+			<p>
+				{{ post.excerpt }}
+			</p>
+	{% endfor %}
+	
+	<div class="pagination">
+	{% if paginator.next_page %}
+		<a class="pagination-item older" href="{{ site.baseurl }}page{{paginator.next_page}}">Older</a>
+	{% else %}
+		<span class="pagination-item older">Older</span>
+	{% endif %}
+	
+	{% if paginator.previous_page %}
+		{% if paginator.page == 2 %}
+			<a class="pagination-item newer" href="{{ site.baseurl }}/blog/">Newer</a>
+		{% else %}
+			<a class="pagination-item newer" href="{{ site.baseurl }}page{{paginator.previous_page}}">Newer</a>
+		{% endif %}
+	{% else %}
+		<span class="pagination-item newer">Newer</span>
+	{% endif %}
+	</div>
+	
+	</section>
+	
+	
