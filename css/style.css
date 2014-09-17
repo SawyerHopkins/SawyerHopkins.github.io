@@ -192,15 +192,18 @@
 			
 			.image.avatar
 			{
-				width: 48px;
-				height: 48px;
+				width: 80px;
+				height: 80px;
 				background: #f00;
 			}
 			
 				.image.avatar img
 				{
-					width: 48px;
-					height: 48px;
+					width: 80px;
+					height: 80px;
+					border-radius: 40px;
+					-webkit-border-radius: 40px;
+					-moz-border-radius: 40x;
 				}
 
 			.image.full
@@ -986,6 +989,7 @@
 		margin: 1.75em 1.5em 1.5em 1.5em;
 		min-height: 48px;
 		cursor: default;
+		text-align: center;
 	}
 	
 		#logo h1
@@ -1004,14 +1008,12 @@
 			font-size: 0.6em;
 			color: rgba(255,255,255,0.5);
 			line-height: 1.25em;
-			margin: 0.5em 0 0 0;
+			margin-top: 0.5em;
 		}
 		
 		#logo .image
 		{
-			position: absolute;
-			left: 0;
-			top: 0;
+			position: relative;
 		}
 	
 	#nav
