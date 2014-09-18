@@ -1,44 +1,43 @@
-<!-- Header -->
-	<div id="header" class="skel-panels-fixed">
-
-		<div class="top">
-
-			<!-- Logo -->
-				<div id="logo">
-					<span class="image avatar"><a href="{{ site.baseurl }}/"><img src="http://www.gravatar.com/avatar/51e645411e895b0a8670f8d9e2793eeb.png" alt="" /></a></span>
-					<a href="{{ site.baseurl }}/"> <h1 id="title">{{ site.title }}</h1></a>
-					<span class="byline">{{ site.description }}</span>
-					
-				</div>
-				
-			<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li><a href="#top" id="top-link" class="skel-panels-ignoreHref"><span class="fa fa-home">About Me</span></a></li>
-						<li><a href="#work" id="work-link" class="skel-panels-ignoreHref"><span class="fa fa-flask">R&D</span></a></li>
-						<li><a href="#projects" id="about-link" class="skel-panels-ignoreHref"><span class="fa fa-bug">Projects</span></a></li>
-					</ul>
-				</nav>
-				
-				<nav id="navunder">
-					<ul>
-						<li><a href="/blog/"><span class="fa fa-paperclip">Blog</span></a></li>
-					</ul>
-				</nav>
-						
-		</div>
-				
-		<div class="bottom">
-
-			<!-- Social Icons -->
-				<ul class="icons">
-					<li><a href="https://www.facebook.com/sshopkin" class="fa fa-facebook solo"><span>Facebook</span></a></li>
-					<li><a href="http://www.linkedin.com/in/sawyerhopkins" class="fa fa-linkedin solo"><span>LinkedIn</span></a></li>
-					<li><a href="https://github.com/SawyerHopkins" class="fa fa-github solo"><span>Github</span></a></li>
-					<li><a href="mailto:sawyer@sawyerhopkins.com" class="fa fa-envelope solo"><span>Email</span></a></li>
-					<li><a href="cv.pdf" class="fa fa-pencil-square-o solo"><span>CV</span></a></li>
-				</ul>
-				
-		</div>
-			
-	</div>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">		
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="{{ site.baseurl }}/">
+			  <img class="img-grav" src="http://www.gravatar.com/avatar/51e645411e895b0a8670f8d9e2793eeb.png" alt="Generic placeholder image">  
+			  {{ site.title }} </a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="{{ site.baseurl }}/">Home</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Blog <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/blog/">Recent</a></li>
+					<!-- For future use when there are more posts
+					<li class="divider"></li>
+                    <li><a href="#">Categories</a></li>
+					-->
+                  </ul>
+                </li>
+              </ul>
+			  <ul class="nav navbar-nav iconnav">
+				<li class="icon-row"><a href="https://www.facebook.com/sshopkin" class="icon-link"><i class="fa fa-facebook-square social"></i></a></li>
+				<li class="icon-row"><a href="https://www.linkedin.com/in/sawyerhopkins" class="icon-link"><i class="fa fa-linkedin-square social"></i></a></li>
+				<li class="icon-row"><a href="https://github.com/SawyerHopkins" class="icon-link"><i class="fa fa-github-square social"></i></a></li>
+				<li class="icon-row"><a href="mailto:sawyer@sawyerhopkins.com" class="icon-link"><i class="fa fa-envelope-square social"></i></a></li>
+			  </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
