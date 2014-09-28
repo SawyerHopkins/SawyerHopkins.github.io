@@ -18,6 +18,7 @@
             </div>
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
+				{% if page.url == "/index.html" %}
                 <li class="active"><a href="{{ site.baseurl }}/">Home</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Blog <span class="caret"></span></a>
@@ -29,6 +30,19 @@
 					-->
                   </ul>
                 </li>
+				{% else %}
+				<li><a href="{{ site.baseurl }}/">Home</a></li>
+                <li class="dropdown active">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Blog <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/blog/">Recent</a></li>
+					<!-- For future use when there are more posts
+					<li class="divider"></li>
+                    <li><a href="#">Categories</a></li>
+					-->
+                  </ul>
+                </li>
+				{% endif %}
               </ul>
 			  <ul class="nav navbar-nav iconnav">
 				<li class="icon-row"><a href="https://www.facebook.com/sshopkin" class="icon-link"><i class="fa fa-facebook-square social"></i></a></li>
