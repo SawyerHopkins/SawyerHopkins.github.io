@@ -1,0 +1,136 @@
+---
+layout: post
+title: "N Space in F#"
+date: 2014-09-27 12:30:00
+category: "F#"
+tags: [F#, Math, SciLib]
+summary: "Creating N-Space grids for numerical evaluation of functions."
+comments: true
+---
+
+<div class="post-block">
+
+<p class="post-header">SciLib Core</p>
+	
+<p class="post-para"> To iterate over the possible pairings of two variables, you would likely use a nested for loop. For each additional variable you would increase the nesting depth by one. This creates a problem when iterating over an unknown number of variables, as you do not know the depth of loop nesting you will need. At the base of my main pet project, SciLib, is a small bit of F# code that works through this problem by creating a grid for an N-Dimensional space. Well actually that might be a bit misleading as you will see later on. Really I flatten the space into one dimension so that I can iterate over the space like I would a single variable. I realized while drafting this post that I mention the word function quite frequently. For this post I will try to use the word function to refer to some sort of mathematical function of N variables, and refer to functions and methods within the code ambiguously as a method.</p>
+	
+<!--more-->	
+	
+<p class="post-header">Getting Started</p>
+
+<p class="post-para"> To begin setting up the space I start by passing two arguments to the initialize the class containing the evaluation method. The first being a class which defines the function, and the second being a set of boundary conditions for each variable of the function. When a user inputs a function, it is converted to an assembly using CodeDOM which is then contained in the <i>FunctionBaseCore</i> class. The <i>FunctionBounds</i> class is an array of boundary conditions which are formatted as three numbers: a lower bound, a upper bound, and a step size.</p>
+
+<div class="post-para">
+{% highlight fsharp linenos %}
+
+type public NFunctionalEqCore(_func : FunctionBaseCore,_bounds : FunctionBounds, suppress) =
+    ///The base function
+    member this.func = _func
+    ///The bounds to evaluate against
+    member this.bounds = List.ofSeq(_bounds.BoundsList)
+
+{% endhighlight %}
+</div>
+
+<p class="post-para">I begin setting up the space by creating a discrete set of axes using the <i>List.map</i> method. The <i>map</i> method iterates over each set of boundary conditions and maps out the axis for the corresponding variable. Think of it as creating a set of number lines with a spacing of <i>bound.Step</i> between each tick mark. By putting two or more of these number lines together you get a grid. I then use to <i>fold</i> method to find the total number of data points on this grid that need to be evaluated.</p>
+
+<div class="post-para">
+{% highlight fsharp linenos %}
+
+    member this.evalFlat() =
+        if (suppress = false) then Console.WriteLine("Initializing Coordinate System")
+        //Creates a list of lists containing each possible value of each variable at the given step size
+        let nbounds = List.map(fun (bound : Bounds) -> [bound.Lower .. bound.Step .. bound.Upper]) this.bounds
+        //Calculates the total number of unique points
+        let totalsize = List.fold(fun acc f -> acc*List.length(f)) 1 nbounds
+		
+{% endhighlight %}
+</div>
+
+<p class="post-para"> So now that I have my N-Dimensional basis set up, and I know how many data points this basis corresponds to, I need to create a one dimensional array that contains every data point of the N-Space. I do this by creating the <i>cords</i> array with a length of <i>totalsize</i>. Now the trick is how to get an element of <i>cords</i> to contain all the information that identifies a unique point in the original N-Space. More specifically an element of cords should look like:</p>
+
+<div class="post-para">
+$$
+[e_1,e_2,\ldots,e_n]
+$$
+</div>
+
+<div class="post-para">
+{% highlight fsharp linenos %}
+
+let cords = new System.Collections.Generic.List<System.Collections.Generic.List<float32>>()
+for n=0 to (totalsize - 1) do
+    cords.Add(new System.Collections.Generic.List<float32>())
+
+{% endhighlight %}
+</div>
+
+<p class="post-para">
+I figure that the best way to describe what is happening in the code below is to include an example of what <i>cords</i> would look like for three variables that can have values 1 or 2. The table below shows the three variables as columns and each unique data point as a row. The main problem that we are trying to get around is using a nested for loop of uncertain depth, so we can't generate this table row by row. If we could do this there would be no need to reduce to a one dimensional space. However, we can create the same table by generating each column and put them together.
+</p>
+
+<div class="post-para">
+$$
+\begin{vmatrix}
+1 & 1 & 1 \\
+1 & 1 & 2 \\
+1 & 2 & 1 \\
+1 & 2 & 2 \\
+2 & 1 & 1 \\
+2 & 1 & 2 \\
+2 & 2 & 1 \\
+2 & 2 & 2
+\end{vmatrix}
+$$
+</div>
+
+<p class="post-para">
+Notice that the the second and third variables have a repeating pattern. Identifying and exploiting this pattern is key to generating this one dimensional space. So I have created a variable <i>reptimes</i> which will idicate how many times I need to repeat a given pattern. The first variable does not have a repeating pattern so I make a special case and set <i>reptimes</i> to one. Now I need to find how many times I need to repeat a number in each pattern. So logically to get each unique data point I need to repeat a number once for each unique pairing of all the variables in the columns to the right of the one I am iterating though. So for this I create a new variable called <i>reduce</i>. In mathy words I am finding the size of the sub-space of the remaining variables. In less mathy words I am just recalculating <i>totalsize</i> for the remaining variables. The remaining few lines are just looping across each number and <i>reduce</i>.
+</p>
+
+<div class="post-para">
+{% highlight fsharp linenos %}
+
+//generates each variable (each column)
+for var=0 to List.length(nbounds) - 1 do
+    let mutable rep = 1
+    let mutable index = 0
+    if var > 0 then rep <- List.length(nbounds.Item(var-1))
+    //loops through the number of pattern repetitions
+        for reptimes=1 to rep do
+            //loops through the possible variable values
+		    let reduce = Seq.fold(fun acc f -> acc * List.length(f)) 1 (Seq.take(var+1) (List.toSeq(nbounds)))
+            for values=0 to (List.length(nbounds.Item(var)) - 1) do
+                //loops through the value repetitions
+                for valuerep=1 to (totalsize / reduce) do
+                    cords.[index].Add(this.bounds.Item(var).Lower+(this.bounds.Item(var).Step*(float32(values))))
+                    index <- index+1
+					
+{% endhighlight %}
+</div>
+
+<p class="post-para">
+That is all there is to it. Now I can simply use one loop to iterate across my newly created array <i>cords</i> and invoke my function at each point to evaluate. This evaluation then adds another column to <i>cords</i> such that each data point is represented as such:
+</p>
+
+<div class="post-para">
+$$
+[e_1,e_2,\ldots,e_n,F(e_1,e_2,\ldots,e_n)]
+$$
+</div>
+
+<div class="post-para">
+{% highlight fsharp linenos %}
+
+//Calculates the function output for each point.
+for count=0 to (totalsize - 1) do
+    //Gathers the arguments for the point.
+    let args = cords.[count].ToArray()
+    //invokes the function with the given arguments and updates the coordinate grid.
+    cords.[count].Add(this.func.GetReturnFloat(args))
+cords
+
+{% endhighlight %}
+</div>
+	
+</div>

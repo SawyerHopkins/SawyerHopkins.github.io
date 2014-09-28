@@ -7,9 +7,9 @@
 		{% for post in site.posts limit: 3 %}
 
 		{% if forloop.index > 1 %}
-			<li data-target="#myCarousel" data-slide-to="{{ forloop.index | add:1 }}"></li>
+			<li data-target="#myCarousel" data-slide-to="{{ forloop.index | minus: 1 }}"></li>
 		{% else %}
-			<li data-target="#myCarousel" data-slide-to="{{ forloop.index | add:1 }}" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="{{ forloop.index | minus: 1 }}" class="active"></li>
 		{% endif %}
 		
 		{% endfor %}

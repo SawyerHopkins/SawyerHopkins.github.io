@@ -11,6 +11,10 @@ font-weight: bold;
 
 }
 
+.post-para {
+margin-bottom:25px;
+}
+
 /* Hack to get pagination to work proper. Fix this later */
 .post-preview {
 font-size: 0em;
