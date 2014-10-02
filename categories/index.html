@@ -1,0 +1,31 @@
+---
+layout: blog
+title: SawyerHopkins - Blog
+---
+<!-- Intro -->
+	<h2 class="blog-header">Newest Post by Category</h2>
+	
+	{% assign val = site.categories | sort_most_post %}
+	{% for cats in val %}
+		{% assign count = cats | last | size %}
+		<h3 class="cat-link">
+			<a href="{{ cats | first }}">
+				<i class="fa fa-archive" style="margin-right:10px"></i> {{ cats | first }} - {{ count }}
+				{% if count == 1 %}
+				post
+				{% else %}
+				posts
+				{% endif %}
+			</a>
+		</h3>
+	<div class="cat-post">
+		{% assign post = cats | last | first %}
+		<h3 class="post-link"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+		{{ post.excerpt | replace_first: "post-header", "post-preview"}}
+		</div>
+	</div>
+	{% endfor %}
+	
+	</section>
+	
+	

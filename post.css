@@ -1,3 +1,20 @@
+.cat-link {
+	text-decoration: none;
+	font-size:2.0em;
+	font-weight: bold;
+	margin-bottom:30px;
+	margin-top:30px;
+}
+
+.cat-link a {
+	text-decoration: none;
+}
+
+.cat-post {
+	margin-left:10%;
+	margin-right:10%;
+}
+
 .blog-header {
 text-align: center;
 margin-bottom:25px;
