@@ -1,5 +1,7 @@
-SawyerHopkins.github.io
-=======================
+SawyerHopkins.github.jekyll
+===========================
+
+The Jekyll files for the local generated SawyerHopkins.github.io project.
 
 GitHub pages runs Jekyll in the --safe mode which prevents me from running my custom category plugins. To get about this problem I have created two seperate projects:
 
