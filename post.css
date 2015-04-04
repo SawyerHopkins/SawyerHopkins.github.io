@@ -32,6 +32,13 @@ font-weight: bold;
 margin-bottom:25px;
 }
 
+.post-center-type
+{
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
 /* Hack to get pagination to work proper. Fix this later */
 .post-preview {
 font-size: 0em;
