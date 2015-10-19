@@ -75,21 +75,21 @@
 							<span class="icon-bar"></span>
 						</button>
 						<a class="navbar-brand" href="/">
-						<img class="img-grav" src="http://www.gravatar.com/avatar/51e645411e895b0a8670f8d9e2793eeb.png" alt="Generic placeholder image">  
+						<img class="img-grav" src="/assets/img/profile.jpg" alt="A picture of me.">  
 						Sawyer Hopkins </a>
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
 							
-							<li><a href="/">Home</a></li>
-							<li class="dropdown active">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Blog <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="/blog/">Recent</a></li>
-								<li class="divider"></li>
-								<li><a href="/categories/">Categories</a></li>
-							</ul>
-							</li>
+								<li><a href="/">Home</a></li>
+								<li class="dropdown active">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Blog <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="/blog/">Recent</a></li>
+									<li class="divider"></li>
+									<li><a href="/categories/">Categories</a></li>
+								</ul>
+								</li>
 							
 						</ul>
 						<ul class="nav navbar-nav iconnav">
@@ -131,7 +131,25 @@
 <p class="post-header">N-Space - F#</p>
 	
 <div class="post-para">
-<script src="https://gist.github.com/SawyerHopkins/4ea8f3544894b9dab59b.js"> </script>
+<noscript><pre>module Jekyll
+  module SortedCategories
+
+    #Sorts categories so that those with the most posts are on the top of the stack
+    def sort_most_post(catHash)
+      Jekyll.logger.warn &quot;Catination:&quot;, &quot;Sorting categories by post count.&quot;
+      catHash.sort {|x,y| y.last.size &lt;=&gt; x.last.size }
+    end
+
+    #Sorts categories so that those with the most posts are on the bottom of the stack
+    def sort_least_post(catHash)
+      Jekyll.logger.warn &quot;Catination:&quot;, &quot;Sorting categories by post count.&quot;
+      catHash.sort {|x,y| x.last.size &lt;=&gt; y.last.size }
+    end
+
+  end
+end
+
+Liquid::Template.register_filter(Jekyll::SortedCategories)</pre></noscript><script src="https://gist.github.com/SawyerHopkins/4ea8f3544894b9dab59b.js"> </script>
 </div>
 	
 </div>

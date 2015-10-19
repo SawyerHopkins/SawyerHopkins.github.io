@@ -75,21 +75,21 @@
 							<span class="icon-bar"></span>
 						</button>
 						<a class="navbar-brand" href="/">
-						<img class="img-grav" src="http://www.gravatar.com/avatar/51e645411e895b0a8670f8d9e2793eeb.png" alt="Generic placeholder image">  
+						<img class="img-grav" src="/assets/img/profile.jpg" alt="A picture of me.">  
 						Sawyer Hopkins </a>
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
 							
-							<li><a href="/">Home</a></li>
-							<li class="dropdown active">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Blog <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="/blog/">Recent</a></li>
-								<li class="divider"></li>
-								<li><a href="/categories/">Categories</a></li>
-							</ul>
-							</li>
+								<li><a href="/">Home</a></li>
+								<li class="dropdown active">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Blog <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="/blog/">Recent</a></li>
+									<li class="divider"></li>
+									<li><a href="/categories/">Categories</a></li>
+								</ul>
+								</li>
 							
 						</ul>
 						<ul class="nav navbar-nav iconnav">
@@ -131,7 +131,46 @@
 <p class="post-header">N-Space - F#</p>
 	
 <div class="post-para">
-<script src="https://gist.github.com/SawyerHopkins/2c8fc971d48d57274501.js"> </script>
+<noscript><pre>///Evaluates a function at the points within a given bound and step size. 
+type public NFunctionalEqCore(_func : FunctionBaseCore,_bounds : FunctionBounds, suppress) =
+    ///The base function
+    member this.func = _func
+    ///The bounds to evaluate against
+    member this.bounds = List.ofSeq(_bounds.BoundsList)
+
+    ///Evaluates a function between given bounds at a given step size
+    member this.evalFlatNew() =
+        if (suppress = false) then Console.WriteLine(&quot;Initializing Coordinate System&quot;)
+        //Creates a list of lists containing each possible value of each variable at the given step size
+        let nbounds = List.map(fun (bound : Bounds) -&gt; [bound.Lower .. bound.Step .. bound.Upper]) this.bounds
+        //Calculates the total number of unique points
+        let totalsize = List.fold(fun acc f -&gt; acc*List.length(f)) 1 nbounds
+        //Creates an array of arrays to hold the points
+        let cords = new System.Collections.Generic.List&lt;System.Collections.Generic.List&lt;float32&gt;&gt;()
+        for n=0 to (totalsize - 1) do
+            cords.Add(new System.Collections.Generic.List&lt;float32&gt;())
+        //loops through each variable
+        for var=0 to List.length(nbounds) - 1 do
+            let mutable rep = 1
+            let mutable index = 0
+            if var &gt; 0 then rep &lt;- List.length(nbounds.Item(var-1))
+            //loops through the number of pattern repetitions
+            for reptimes=1 to rep do
+                //loops through the possible variable values
+                let reduce = Seq.fold(fun acc f -&gt; acc * List.length(f)) 1 (Seq.take(var+1) (List.toSeq(nbounds)))
+                for values=0 to (List.length(nbounds.Item(var)) - 1) do
+                    //loops through the value repetitions
+                    for valuerep=1 to (totalsize / reduce) do
+                        cords.[index].Add(this.bounds.Item(var).Lower+(this.bounds.Item(var).Step*(float32(values))))
+                        index &lt;- index+1
+        if (suppress = false) then Console.WriteLine(&quot;Performing Calculations&quot;)
+        //Calculates the function output for each point.
+        for count=0 to (totalsize - 1) do
+            //Gathers the arguments for the point.
+            let args = cords.[count].ToArray()
+            //invokes the function with the given arguments and updates the coordinate grid.
+            cords.[count].Add(this.func.GetReturnFloat(args))
+        cords</pre></noscript><script src="https://gist.github.com/SawyerHopkins/2c8fc971d48d57274501.js"> </script>
 </div>
 	
 </div>
