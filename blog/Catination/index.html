@@ -5,7 +5,6 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-
 	<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,11 +53,19 @@
 <![endif]-->
 
 <!-- Custom styles for this template -->
-	<link href="/carousel.css" rel="stylesheet">
-	<link href="/post.css" rel="stylesheet">
-	<link href="/syntax.css" rel="stylesheet">
-  </head>
-
+	<link href="/assets/css/carousel.css" rel="stylesheet">
+	<link href="/assets/css/catagories.css" rel="stylesheet">
+	<link href="/assets/css/general.css" rel="stylesheet">
+	<link href="/assets/css/gist.css" rel="stylesheet">
+	<link href="/assets/css/feature.css" rel="stylesheet">
+	<link href="/assets/css/navbar.css" rel="stylesheet">
+	<link href="/assets/css/post.css" rel="stylesheet">
+	<link href="/assets/css/page.css" rel="stylesheet">
+	<link href="/assets/css/pagination.css" rel="stylesheet">
+	<link href="/assets/css/social.css" rel="stylesheet">
+	<link href="/assets/css/syntax.css" rel="stylesheet">
+	<link href="/assets/css/wells.css" rel="stylesheet">
+ </head>
 	<body>
 		<!-- NAVBAR
 ================================================== -->
@@ -122,13 +129,12 @@
 		
 	</div>	
     </div><!-- /.carousel -->
-		
 		<!-- Main -->
-			<div id="main">
-				<div class="container marketing">
-			      <div class="post-block">
-
-<p class="post-header">Categories in Jekyll</p>
+		<div id="main">
+			<div class="well well-depth-1 post-body">
+				<div class="post-block">
+			    	<div class="well well-depth-2">
+			    	<p class="post-header">Categories in Jekyll</p>
 	
 <p class="post-para">I realized that I would like to add the ability for users to search my blog by post category, however Jekyll does not provide a built in method for creating paginated lists of post by category. So I opened up the Jekyll source scripts to figure out what all makes pagination tick and modified it to create pages for categories. The Jekyll script for pagination is under the <i>jekyll-paginate</i> gem and uses two scripts: <i>pager.rb</i> and <i>pagination.rb</i>. After looking through these scripts, I figured that I could get away with leaving the pager class alone and simply making a few changes to the pagination class. This modified class I have dubbed to be <i>catination.rb</i>.</p>
 	
@@ -220,16 +226,16 @@
 
 <p class="post-para"> That's all I got for this. Jekyll has a pretty solid core which makes creating plug-ins a breeze. The only problem was that GitHub Pages (for obvious reasons) runs Jekyll in safe mode which means my plug-ins don't get executed. I fixed this by creating a new project for the Jekyll source, building the site locally, and letting Jekyll output the site into the GitHub Pages project folder. This code is available as a project on my GitHub profile, and as always the gist link is below.</p>
 
-</div>
-				
-				<div style="margin-top:25px">
-				
-				<b>Like this post? <a href="/gists/Catination">Get the Gist</a></b>.
-				  
-				</div>
+			    	</div>
+					<div class="gist-link">
+					
+						<div class="well well-depth-2">
+						<b>Like this jist? <a href="/gists/Catination">Get the Gist</a>.</b>
+						</div>
+					  
+					</div>
 
-				
-				 <div class="social-sharing">
+				<div class="social-sharing">
 	
 	<div class="share-button text">
 	Share
@@ -246,7 +252,7 @@
 	
 </div>
 				  
-				  
+				
 					<div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -262,12 +268,10 @@
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
      
-				  
-				  
+				
 				</div>
 			</div>
-			
-		
+		</div>
 		
 	</body>
 </html>

@@ -5,7 +5,6 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-
 	<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +15,7 @@
 	<meta name="author" content="">
 	<link rel="icon" href="/favicon.ico">
 
-	<title>N Space in F# - Gist</title>
+	<title>N Space in F#</title>
 	
 <!-- Google Analytics -->
 	<script>
@@ -54,11 +53,19 @@
 <![endif]-->
 
 <!-- Custom styles for this template -->
-	<link href="/carousel.css" rel="stylesheet">
-	<link href="/post.css" rel="stylesheet">
-	<link href="/syntax.css" rel="stylesheet">
-  </head>
-
+	<link href="/assets/css/carousel.css" rel="stylesheet">
+	<link href="/assets/css/catagories.css" rel="stylesheet">
+	<link href="/assets/css/general.css" rel="stylesheet">
+	<link href="/assets/css/gist.css" rel="stylesheet">
+	<link href="/assets/css/feature.css" rel="stylesheet">
+	<link href="/assets/css/navbar.css" rel="stylesheet">
+	<link href="/assets/css/post.css" rel="stylesheet">
+	<link href="/assets/css/page.css" rel="stylesheet">
+	<link href="/assets/css/pagination.css" rel="stylesheet">
+	<link href="/assets/css/social.css" rel="stylesheet">
+	<link href="/assets/css/syntax.css" rel="stylesheet">
+	<link href="/assets/css/wells.css" rel="stylesheet">
+ </head>
 	<body>
 		<!-- NAVBAR
 ================================================== -->
@@ -114,7 +121,7 @@
           <!--<img src="/assets/img/sawyerheader.png" class="img-responsive">-->
           <div class="container">
             <div class="carousel-caption">
-              <h1><b><span class="carousel-text">N Space in F# - Gist</span></b></h1>
+              <h1><b><span class="carousel-text">N Space in F#</span></b></h1>
               <p><span class="carousel-text">Creating N-Space grids for numerical evaluation of functions.</span></p>
             </div>
           </div>
@@ -122,15 +129,13 @@
 		
 	</div>	
     </div><!-- /.carousel -->
-		
 		<!-- Main -->
-			<div id="main">
-				<div class="container marketing">
-			      <div class="post-block">
-
-<p class="post-header">N-Space - F#</p>
+		<div id="main">
+			<div class="well well-depth-1 post-body">
+				<div class="gist-block">
+				    <p class="gist-header">N Space in F# - Gist</p>
 	
-<div class="post-para">
+<div class="gist-para">
 <noscript><pre>///Evaluates a function at the points within a given bound and step size. 
 type public NFunctionalEqCore(_func : FunctionBaseCore,_bounds : FunctionBounds, suppress) =
     ///The base function
@@ -172,15 +177,8 @@ type public NFunctionalEqCore(_func : FunctionBaseCore,_bounds : FunctionBounds,
             cords.[count].Add(this.func.GetReturnFloat(args))
         cords</pre></noscript><script src="https://gist.github.com/SawyerHopkins/2c8fc971d48d57274501.js"> </script>
 </div>
-	
-</div>
-				
-				<div style="margin-top:25px">
-				  
-				</div>
-
-				
-				 <div class="social-sharing">
+					  
+					<div class="social-sharing">
 	
 	<div class="share-button text">
 	Share
@@ -189,20 +187,18 @@ type public NFunctionalEqCore(_func : FunctionBaseCore,_bounds : FunctionBounds,
 		<a href="https://twitter.com/home?status=/gists/N-Space-In-FSharp/index.html " target="_blank"><i class="fa fa-twitter social"></i></a>
 	</div>
 	<div class="share-button linkedin">
-		<a href="http://www.linkedin.com/shareArticle?mini=true&url=/gists/N-Space-In-FSharp/index.html&title=N Space in F# - Gist&summary=Creating N-Space grids for numerical evaluation of functions.&source=SawyerHopkins.com" target="_blank"><i class="fa fa-linkedin social"></i></a>
+		<a href="http://www.linkedin.com/shareArticle?mini=true&url=/gists/N-Space-In-FSharp/index.html&title=N Space in F#&summary=Creating N-Space grids for numerical evaluation of functions.&source=SawyerHopkins.com" target="_blank"><i class="fa fa-linkedin social"></i></a>
 	</div>
 	<div class="share-button gplus">
 		<a href="https://plus.google.com/share?url=/gists/N-Space-In-FSharp/index.html" target="_blank"><i class="fa fa-google-plus social"></i></a>
 	</div>
 	
 </div>
-				  
-				  
-				  
+					  
+					
 				</div>
 			</div>
-			
-		
+		</div>
 		
 	</body>
 </html>

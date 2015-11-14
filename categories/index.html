@@ -54,10 +54,19 @@
 <![endif]-->
 
 <!-- Custom styles for this template -->
-	<link href="/carousel.css" rel="stylesheet">
-	<link href="/post.css" rel="stylesheet">
-	<link href="/syntax.css" rel="stylesheet">
-  </head>
+	<link href="/assets/css/carousel.css" rel="stylesheet">
+	<link href="/assets/css/catagories.css" rel="stylesheet">
+	<link href="/assets/css/general.css" rel="stylesheet">
+	<link href="/assets/css/gist.css" rel="stylesheet">
+	<link href="/assets/css/feature.css" rel="stylesheet">
+	<link href="/assets/css/navbar.css" rel="stylesheet">
+	<link href="/assets/css/post.css" rel="stylesheet">
+	<link href="/assets/css/page.css" rel="stylesheet">
+	<link href="/assets/css/pagination.css" rel="stylesheet">
+	<link href="/assets/css/social.css" rel="stylesheet">
+	<link href="/assets/css/syntax.css" rel="stylesheet">
+	<link href="/assets/css/wells.css" rel="stylesheet">
+ </head>
 
 	<body>
 		<!-- NAVBAR
@@ -141,6 +150,22 @@
 <!--<img src="/assets/img/sawyerheader.png" class="img-responsive">-->
 		<div class="container">
 			<div class="carousel-caption">
+				<h1><b><span class="carousel-text">Bash Build Manager</span></b></h1>
+				<p><span class="carousel-text">Using bash to manage build chains.</span></p>
+				<p><a class="btn btn-lg btn-primary" href="/blog/Bash-Build-Manager" role="button">Read Now</a></p>
+			</div>
+		</div>
+	</div>		
+		
+
+		
+	
+	<div class="item">
+	
+		
+<!--<img src="/assets/img/sawyerheader.png" class="img-responsive">-->
+		<div class="container">
+			<div class="carousel-caption">
 				<h1><b><span class="carousel-text">Dynamic Libraries in CUDA</span></b></h1>
 				<p><span class="carousel-text">How to load CUDA dependant dynamically libraries.</span></p>
 				<p><a class="btn btn-lg btn-primary" href="/blog/Cuda-Dynamics-Libraries" role="button">Read Now</a></p>
@@ -166,22 +191,6 @@
 		
 
 		
-	
-	<div class="item">
-	
-		
-<!--<img src="/assets/img/sawyerheader.png" class="img-responsive">-->
-		<div class="container">
-			<div class="carousel-caption">
-				<h1><b><span class="carousel-text">Catination</span></b></h1>
-				<p><span class="carousel-text">Pagination for post categories in Jekyll.</span></p>
-				<p><a class="btn btn-lg btn-primary" href="/blog/Catination" role="button">Read Now</a></p>
-			</div>
-		</div>
-	</div>		
-		
-
-		
 </div>	
 <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -194,116 +203,83 @@
 </div><!-- /.carousel -->
 		
 		<!-- Main -->
-			<div id="main">
-				<div class="container marketing">
+		<div id="main">
+			<div class="blog-previews">
 			      <!-- Intro -->
+<div class="well well-depth-1">
 	<h2 class="blog-header">Newest Post by Category</h2>
-	
+
+	<div class="post-catagories">
 	
 	
 		
-		<h3 class="cat-link">
-			<a href="jekyll">
-				<i class="fa fa-archive" style="margin-right:10px"></i> jekyll - 2
-				
-				posts
-				
-			</a>
-		</h3>
-	<div class="cat-post">
-		
-		<h3 class="post-link"><a href="/blog/Catination">Catination</a></h3>
-		<div class="post-block">
-
-<p class="post-preview">Categories in Jekyll</p>
-	
-<p class="post-para">I realized that I would like to add the ability for users to search my blog by post category, however Jekyll does not provide a built in method for creating paginated lists of post by category. So I opened up the Jekyll source scripts to figure out what all makes pagination tick and modified it to create pages for categories. The Jekyll script for pagination is under the <i>jekyll-paginate</i> gem and uses two scripts: <i>pager.rb</i> and <i>pagination.rb</i>. After looking through these scripts, I figured that I could get away with leaving the pager class alone and simply making a few changes to the pagination class. This modified class I have dubbed to be <i>catination.rb</i>.</p>
-	
-
-
-
+	<a href="jekyll" class="post-catagory">
+		<div class="btn btn-xs btn-primary">
+			<h3 class="cat-link">
+					jekyll<br>2
+					
+					posts
+					
+			</h3>
 		</div>
-	</div>
+	</a>
 	
 		
-		<h3 class="cat-link">
-			<a href="mathematica">
-				<i class="fa fa-archive" style="margin-right:10px"></i> mathematica - 1
-				
-				post
-				
-			</a>
-		</h3>
-	<div class="cat-post">
-		
-		<h3 class="post-link"><a href="/blog/NIntegrate-Plots">NIntegrate Plots</a></h3>
-		<div class="post-block">
-
-<p class="post-preview">Wave Functions in Free Space</p>
-	
-<p class="post-para">Consider a Gaussian wave packet in free space. I will use this as a simple example to demonstrate the use of NIntegrate and ListPlot in Mathematica to create plots of wave functions that are non-analytic or take longer than desired to compute analytically. Since I am using a wave packet in free space I can project the packet onto the eigenstates with a Fourier Transform. This allows me to use Mathematica's existing functions to construct a time dependant wave function.</p>
-	
-
-
-
+	<a href="mathematica" class="post-catagory">
+		<div class="btn btn-xs btn-primary">
+			<h3 class="cat-link">
+					mathematica<br>1
+					
+					post
+					
+			</h3>
 		</div>
-	</div>
+	</a>
 	
 		
-		<h3 class="cat-link">
-			<a href="fsharp">
-				<i class="fa fa-archive" style="margin-right:10px"></i> fsharp - 1
-				
-				post
-				
-			</a>
-		</h3>
-	<div class="cat-post">
-		
-		<h3 class="post-link"><a href="/blog/N-Space-In-FSharp">N-Space in F#</a></h3>
-		<div class="post-block">
-
-<p class="post-preview">SciLib Core</p>
-	
-<p class="post-para"> To iterate over the possible pairings of two variables, you would likely use a nested for loop. For each additional variable you would increase the nesting depth by one. This creates a problem when iterating over an unknown number of variables, as you do not know the depth of loop nesting you will need. At the base of my main pet project, SciLib, is a small bit of F# code that works through this problem by creating a grid for an N-Dimensional space. Well actually that might be a bit misleading as you will see later on. Really I flatten the space into one dimension so that I can iterate over the space like I would a single variable. I realized while drafting this post that I mention the word function quite frequently. For this post I will try to use the word function to refer to some sort of mathematical function of N variables, and refer to functions and methods within the code ambiguously as a method.</p>
-	
-
-
-
+	<a href="fsharp" class="post-catagory">
+		<div class="btn btn-xs btn-primary">
+			<h3 class="cat-link">
+					fsharp<br>1
+					
+					post
+					
+			</h3>
 		</div>
-	</div>
+	</a>
 	
 		
-		<h3 class="cat-link">
-			<a href="c++">
-				<i class="fa fa-archive" style="margin-right:10px"></i> c++ - 1
-				
-				post
-				
-			</a>
-		</h3>
-	<div class="cat-post">
-		
-		<h3 class="post-link"><a href="/blog/Cuda-Dynamics-Libraries">Dynamic Libraries in CUDA</a></h3>
-		<div class="post-block">
-
-	<p class="post-preview">Building the dynamic library.</p>
-		
-	<p class="post-para">So we need to look at two pieces of code: Some class that inherits an abstract class that is to be seperatedly compiled and loaded as the dynamic library, and some main application the we want to load this library into. Normally this is a straight forward process, but since copying objects directly to device memory does not make a copy of the VTable we will need to add an extra step along the way.</p>
-		
-	
-
-
+	<a href="c++" class="post-catagory">
+		<div class="btn btn-xs btn-primary">
+			<h3 class="cat-link">
+					c++<br>1
+					
+					post
+					
+			</h3>
 		</div>
+	</a>
+	
+		
+	<a href="automation" class="post-catagory">
+		<div class="btn btn-xs btn-primary">
+			<h3 class="cat-link">
+					automation<br>1
+					
+					post
+					
+			</h3>
+		</div>
+	</a>
+	
 	</div>
+</div>
 	
-	
-	</section>
+</section>
 	
 			  
-				</div>
 			</div>
-			
+		</div>
 		
 		
 	</body>

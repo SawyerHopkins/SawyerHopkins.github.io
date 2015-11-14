@@ -1,0 +1,17 @@
+.social-sharing {
+	margin-top: 25px;
+	margin-bottom: 50px;
+}
+
+.share-button {
+	height: 50px;
+	margin-left: 25px;
+	text-align: center;
+	float: left;
+}
+
+.share-button.text {
+	margin-left: 0px;
+	line-height: 29px;
+	font-weight: bold;
+}

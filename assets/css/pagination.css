@@ -1,0 +1,15 @@
+.pagination {
+	display:block;
+	margin-top:50px;
+}
+
+/* Pagination items can be `span`s or `a`s */
+.pagination-button {
+	float: left;
+	height: 30px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	width:50%;
+	text-align: center;
+	font-size:1.5em;
+}

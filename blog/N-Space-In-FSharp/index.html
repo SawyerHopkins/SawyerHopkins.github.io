@@ -5,7 +5,6 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-
 	<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,11 +53,19 @@
 <![endif]-->
 
 <!-- Custom styles for this template -->
-	<link href="/carousel.css" rel="stylesheet">
-	<link href="/post.css" rel="stylesheet">
-	<link href="/syntax.css" rel="stylesheet">
-  </head>
-
+	<link href="/assets/css/carousel.css" rel="stylesheet">
+	<link href="/assets/css/catagories.css" rel="stylesheet">
+	<link href="/assets/css/general.css" rel="stylesheet">
+	<link href="/assets/css/gist.css" rel="stylesheet">
+	<link href="/assets/css/feature.css" rel="stylesheet">
+	<link href="/assets/css/navbar.css" rel="stylesheet">
+	<link href="/assets/css/post.css" rel="stylesheet">
+	<link href="/assets/css/page.css" rel="stylesheet">
+	<link href="/assets/css/pagination.css" rel="stylesheet">
+	<link href="/assets/css/social.css" rel="stylesheet">
+	<link href="/assets/css/syntax.css" rel="stylesheet">
+	<link href="/assets/css/wells.css" rel="stylesheet">
+ </head>
 	<body>
 		<!-- NAVBAR
 ================================================== -->
@@ -122,13 +129,12 @@
 		
 	</div>	
     </div><!-- /.carousel -->
-		
 		<!-- Main -->
-			<div id="main">
-				<div class="container marketing">
-			      <div class="post-block">
-
-<p class="post-header">SciLib Core</p>
+		<div id="main">
+			<div class="well well-depth-1 post-body">
+				<div class="post-block">
+			    	<div class="well well-depth-2">
+			    	<p class="post-header">SciLib Core</p>
 	
 <p class="post-para"> To iterate over the possible pairings of two variables, you would likely use a nested for loop. For each additional variable you would increase the nesting depth by one. This creates a problem when iterating over an unknown number of variables, as you do not know the depth of loop nesting you will need. At the base of my main pet project, SciLib, is a small bit of F# code that works through this problem by creating a grid for an N-Dimensional space. Well actually that might be a bit misleading as you will see later on. Really I flatten the space into one dimension so that I can iterate over the space like I would a single variable. I realized while drafting this post that I mention the word function quite frequently. For this post I will try to use the word function to refer to some sort of mathematical function of N variables, and refer to functions and methods within the code ambiguously as a method.</p>
 	
@@ -231,16 +237,16 @@ $$
 <span class="lineno">7</span> <span class="n">cords</span></code></pre></div>
 </div>
 	
-</div>
-				
-				<div style="margin-top:25px">
-				
-				<b>Like this post? <a href="/gists/N-Space-In-FSharp">Get the Gist</a></b>.
-				  
-				</div>
+			    	</div>
+					<div class="gist-link">
+					
+						<div class="well well-depth-2">
+						<b>Like this jist? <a href="/gists/N-Space-In-FSharp">Get the Gist</a>.</b>
+						</div>
+					  
+					</div>
 
-				
-				 <div class="social-sharing">
+				<div class="social-sharing">
 	
 	<div class="share-button text">
 	Share
@@ -257,7 +263,7 @@ $$
 	
 </div>
 				  
-				  
+				
 					<div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -273,12 +279,10 @@ $$
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
      
-				  
-				  
+				
 				</div>
 			</div>
-			
-		
+		</div>
 		
 	</body>
 </html>

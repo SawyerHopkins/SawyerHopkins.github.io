@@ -1,0 +1,97 @@
+/* Featurettes
+------------------------- */
+
+hr {
+  border-top: 2px solid #eee;
+}
+
+.featurette-info-container {
+  display: flex;
+}
+
+.featurette-info-object {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 15px;
+  margin-left: 15px;
+  flex: 1;
+}
+
+.featurette-info-object p {
+  text-align: center;
+}
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+.featurette-work-container {
+  display: flex;
+}
+
+.featurette-work-object img {
+  max-width: 250px;
+  max-height: 250px;
+  border-radius: 50px;
+  border: 3px solid #2F3E4A;
+}
+
+.featurette-work-object {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.featurette-work-object p {
+  text-align: justify;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.featurette-reverse {
+  flex-direction: row-reverse;
+}
+
+.featurette-work-object h2 {
+  margin-bottom: 20px;
+  font-size: 40px;
+  text-align: center;
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+@media (max-width: 600px) {
+  /* Navbar positioning foo */
+  .featurette-work-container
+  {
+    flex-direction: column;
+  }
+  .featurette-reverse
+  {
+    flex-direction: column; 
+  }
+  .featurette-work-object p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Navbar positioning foo */
+  .featurette-info-container {
+    flex-direction: column;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+.featurette-work-object p {
+    text-align: justify;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}

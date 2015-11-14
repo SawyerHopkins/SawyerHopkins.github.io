@@ -5,7 +5,6 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-
 	<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,11 +53,19 @@
 <![endif]-->
 
 <!-- Custom styles for this template -->
-	<link href="/carousel.css" rel="stylesheet">
-	<link href="/post.css" rel="stylesheet">
-	<link href="/syntax.css" rel="stylesheet">
-  </head>
-
+	<link href="/assets/css/carousel.css" rel="stylesheet">
+	<link href="/assets/css/catagories.css" rel="stylesheet">
+	<link href="/assets/css/general.css" rel="stylesheet">
+	<link href="/assets/css/gist.css" rel="stylesheet">
+	<link href="/assets/css/feature.css" rel="stylesheet">
+	<link href="/assets/css/navbar.css" rel="stylesheet">
+	<link href="/assets/css/post.css" rel="stylesheet">
+	<link href="/assets/css/page.css" rel="stylesheet">
+	<link href="/assets/css/pagination.css" rel="stylesheet">
+	<link href="/assets/css/social.css" rel="stylesheet">
+	<link href="/assets/css/syntax.css" rel="stylesheet">
+	<link href="/assets/css/wells.css" rel="stylesheet">
+ </head>
 	<body>
 		<!-- NAVBAR
 ================================================== -->
@@ -122,94 +129,93 @@
 		
 	</div>	
     </div><!-- /.carousel -->
-		
 		<!-- Main -->
-			<div id="main">
-				<div class="container marketing">
-			      <div class="post-block">
+		<div id="main">
+			<div class="well well-depth-1 post-body">
+				<div class="post-block">
+			    	<div class="well well-depth-2">
+			    	<p class="post-header">Building the dynamic library.</p>
+	
+<p class="post-para">So we need to look at two pieces of code: Some class that inherits an abstract class that is to be seperatedly compiled and loaded as the dynamic library, and some main application the we want to load this library into. Normally this is a straight forward process, but since copying objects directly to device memory does not make a copy of the VTable we will need to add an extra step along the way.</p>
+	
+<!--more-->		
 
-	<p class="post-header">Building the dynamic library.</p>
-		
-	<p class="post-para">So we need to look at two pieces of code: Some class that inherits an abstract class that is to be seperatedly compiled and loaded as the dynamic library, and some main application the we want to load this library into. Normally this is a straight forward process, but since copying objects directly to device memory does not make a copy of the VTable we will need to add an extra step along the way.</p>
-		
-	<!--more-->		
+<p class="post-para">So here is our class to be loaded. Here I have included a standard constructor and some work function. Notice these are all flagged with device, so we are looking to offload these functions.</p>
 
-	<p class="post-para">So here is our class to be loaded. Here I have included a standard constructor and some work function. Notice these are all flagged with device, so we are looking to offload these functions.</p>
+<figure>
+<figcaption><b>myClass.cpp</b></figcaption>
+<div class="post-para">
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="lineno">1</span> <span class="k">class</span> <span class="nc">DynamicClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">LoaderClass</span>
+<span class="lineno">2</span> <span class="p">{</span>
+<span class="lineno">3</span> 	<span class="k">public</span><span class="o">:</span>
+<span class="lineno">4</span> 		<span class="n">__device__</span>
+<span class="lineno">5</span> 		<span class="n">DynamicClass</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span> <span class="n">vars</span><span class="p">);</span>
+<span class="lineno">6</span> 		<span class="n">__device__</span>
+<span class="lineno">7</span> 		<span class="kt">void</span> <span class="nf">cudaTest</span><span class="p">();</span>
+<span class="lineno">8</span> <span class="p">};</span></code></pre></div>
+</div>
+</figure>
 
-	<figure>
-	<figcaption><b>myClass.cpp</b></figcaption>
-	<div class="post-para">
-		<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="lineno">1</span> <span class="k">class</span> <span class="nc">DynamicClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">LoaderClass</span>
-<span class="lineno">2</span> 	<span class="p">{</span>
-<span class="lineno">3</span> 		<span class="k">public</span><span class="o">:</span>
-<span class="lineno">4</span> 			<span class="n">__device__</span>
-<span class="lineno">5</span> 			<span class="n">DynamicClass</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span> <span class="n">vars</span><span class="p">);</span>
-<span class="lineno">6</span> 			<span class="n">__device__</span>
-<span class="lineno">7</span> 			<span class="kt">void</span> <span class="nf">cudaTest</span><span class="p">();</span>
-<span class="lineno">8</span> 	<span class="p">};</span></code></pre></div>
-	</div>
-	</figure>
+<p class="post-para">This is the class we want load. Here I have included a constructor and some work function. Notice these are both flagged with device, so we are looking to offload these functions. The next step is to make the factories to create and interact with this class. Since we want to run these functions on the device we need to instantiate the class on device. By doing this the VTable will be created on the device as well, and we won't get a slew of runtime errors.</p>
 
-	<p class="post-para">This is the class we want load. Here I have included a constructor and some work function. Notice these are both flagged with device, so we are looking to offload these functions. The next step is to make the factories to create and interact with this class. Since we want to run these functions on the device we need to instantiate the class on device. By doing this the VTable will be created on the device as well, and we won't get a slew of runtime errors.</p>
-
-	<figure>
-	<figcaption><b>myClass.cpp</b></figcaption>
-	<div class="post-para">
-		<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="lineno"> 1</span> <span class="n">__global__</span>
+<figure>
+<figcaption><b>myClass.cpp</b></figcaption>
+<div class="post-para">
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="lineno"> 1</span> <span class="n">__global__</span>
 <span class="lineno"> 2</span> <span class="kt">void</span> <span class="nf">buildKernel</span><span class="p">(</span><span class="n">LoaderClass</span><span class="o">**</span> <span class="n">myClass</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">vars</span><span class="p">)</span>
 <span class="lineno"> 3</span> <span class="p">{</span>
-<span class="lineno"> 4</span> 	<span class="p">(</span><span class="o">*</span><span class="n">myClass</span><span class="p">)</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DynamicClass</span><span class="p">(</span><span class="n">vars</span><span class="p">);</span>
+<span class="lineno"> 4</span> <span class="p">(</span><span class="o">*</span><span class="n">myClass</span><span class="p">)</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DynamicClass</span><span class="p">(</span><span class="n">vars</span><span class="p">);</span>
 <span class="lineno"> 5</span> <span class="p">}</span>
 <span class="lineno"> 6</span> 
 <span class="lineno"> 7</span> <span class="n">__global__</span>
 <span class="lineno"> 8</span> <span class="kt">void</span> <span class="nf">testKernel</span><span class="p">(</span><span class="n">LoaderClass</span><span class="o">**</span> <span class="n">myClass</span><span class="p">)</span>
 <span class="lineno"> 9</span> <span class="p">{</span>
-<span class="lineno">10</span> 	<span class="p">(</span><span class="o">*</span><span class="n">myClass</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">cudaTest</span><span class="p">();</span>
+<span class="lineno">10</span> <span class="p">(</span><span class="o">*</span><span class="n">myClass</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">cudaTest</span><span class="p">();</span>
 <span class="lineno">11</span> <span class="p">}</span>
 <span class="lineno">12</span> 
 <span class="lineno">13</span> <span class="c1">//Class factories.</span>
 <span class="lineno">14</span> <span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="kt">void</span> <span class="n">getCudaClass</span><span class="p">(</span><span class="n">LoaderClass</span><span class="o">**</span> <span class="n">myClass</span><span class="p">,</span> <span class="kt">float</span><span class="o">*</span> <span class="n">vars</span><span class="p">)</span>
 <span class="lineno">15</span> <span class="p">{</span>
-<span class="lineno">16</span> 	<span class="n">buildKernel</span><span class="o">&lt;&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">myClass</span><span class="p">,</span><span class="n">vars</span><span class="p">);</span>
-<span class="lineno">17</span> 	<span class="n">cudaDeviceSynchronize</span><span class="p">();</span>
+<span class="lineno">16</span> <span class="n">buildKernel</span><span class="o">&lt;&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">myClass</span><span class="p">,</span><span class="n">vars</span><span class="p">);</span>
+<span class="lineno">17</span> <span class="n">cudaDeviceSynchronize</span><span class="p">();</span>
 <span class="lineno">18</span> <span class="p">}</span>
 <span class="lineno">19</span> 
 <span class="lineno">20</span> <span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="kt">void</span> <span class="n">runCudaTest</span><span class="p">(</span><span class="n">LoaderClass</span><span class="o">**</span> <span class="n">myClass</span><span class="p">)</span>
 <span class="lineno">21</span> <span class="p">{</span>
-<span class="lineno">22</span> 	<span class="n">testKernel</span><span class="o">&lt;&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">myClass</span><span class="p">);</span>
-<span class="lineno">23</span> 	<span class="n">cudaDeviceSynchronize</span><span class="p">();</span>
+<span class="lineno">22</span> <span class="n">testKernel</span><span class="o">&lt;&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">myClass</span><span class="p">);</span>
+<span class="lineno">23</span> <span class="n">cudaDeviceSynchronize</span><span class="p">();</span>
 <span class="lineno">24</span> <span class="p">}</span></code></pre></div>
-	</div>
-	</figure>
+</div>
+</figure>
 
-	<p class="post-header">Creating the interface.</p>
+<p class="post-header">Creating the interface.</p>
 
-	<p class="post-para">Note you can change the kernels for work functions to launch with any number of allowable blocks and threads; we really only need the class constructor to be run on one thread. Now we need to create the abstract class which we will use to interface with the class we are loading.</p>
+<p class="post-para">Note you can change the kernels for work functions to launch with any number of allowable blocks and threads; we really only need the class constructor to be run on one thread. Now we need to create the abstract class which we will use to interface with the class we are loading.</p>
 
-	<figure>
-	<figcaption><b>LoaderClass.h</b></figcaption>
-	<div class="post-para">
-		<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nc">LoaderClass</span>
+<figure>
+<figcaption><b>LoaderClass.h</b></figcaption>
+<div class="post-para">
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="lineno"> 1</span> <span class="k">class</span> <span class="nc">LoaderClass</span>
 <span class="lineno"> 2</span> <span class="p">{</span>
-<span class="lineno"> 3</span> 	<span class="k">public</span><span class="o">:</span>
-<span class="lineno"> 4</span> 		<span class="n">__device__</span>
-<span class="lineno"> 5</span> 		<span class="k">virtual</span> <span class="kt">void</span> <span class="n">cudaTest</span><span class="p">()</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="lineno"> 3</span> <span class="k">public</span><span class="o">:</span>
+<span class="lineno"> 4</span> 	<span class="n">__device__</span>
+<span class="lineno"> 5</span> 	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">cudaTest</span><span class="p">()</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 <span class="lineno"> 6</span> <span class="p">};</span>
 <span class="lineno"> 7</span> 
 <span class="lineno"> 8</span> <span class="cm">/** Typedef the factories */</span>
 <span class="lineno"> 9</span> <span class="k">typedef</span> <span class="kt">void</span> <span class="nf">createCudaClass</span><span class="p">(</span><span class="n">LoaderClass</span><span class="o">**</span><span class="p">,</span> <span class="kt">float</span> <span class="o">*</span><span class="p">);</span>
 <span class="lineno">10</span> <span class="k">typedef</span> <span class="kt">void</span> <span class="nf">cudaTest</span><span class="p">(</span><span class="n">LoaderClass</span><span class="o">**</span><span class="p">);</span></code></pre></div>
-	</div>
-	</figure>
+</div>
+</figure>
 
-	<p class="post-header">Putting it all.</p>
+<p class="post-header">Putting it all.</p>
 
-	<p class="post-para">Now that we have all the building blocks setup we can work on the main application. Since the factories we created will spin off the kernels for us we can use dlopen as we would with any other dynamically loaded library with one caveat. Since our constructor is looking for a float array, we should pass it a pointer to an array that exists on device. We do this by created the array on the host machine and then copying it over with cudaMemcpy.</p>
+<p class="post-para">Now that we have all the building blocks setup we can work on the main application. Since the factories we created will spin off the kernels for us we can use dlopen as we would with any other dynamically loaded library with one caveat. Since our constructor is looking for a float array, we should pass it a pointer to an array that exists on device. We do this by created the array on the host machine and then copying it over with cudaMemcpy.</p>
 
-	<figure>
-	<figcaption><b>main.cpp</b></figcaption>
-	<div class="post-para">
-		<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="lineno"> 1</span> <span class="kt">void</span><span class="o">*</span> <span class="n">myLib</span> <span class="o">=</span> <span class="n">dlopen</span><span class="p">(</span><span class="s">&quot;myClass.so&quot;</span><span class="p">,</span> <span class="n">RTLD_LAZY</span><span class="p">);</span>
+<figure>
+<figcaption><b>main.cpp</b></figcaption>
+<div class="post-para">
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="lineno"> 1</span> <span class="kt">void</span><span class="o">*</span> <span class="n">myLib</span> <span class="o">=</span> <span class="n">dlopen</span><span class="p">(</span><span class="s">&quot;myClass.so&quot;</span><span class="p">,</span> <span class="n">RTLD_LAZY</span><span class="p">);</span>
 <span class="lineno"> 2</span> 
 <span class="lineno"> 3</span> <span class="c1">//Throw error if the library does not exist.</span>
 <span class="lineno"> 4</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">myLib</span><span class="p">)</span> <span class="p">{</span>
@@ -253,25 +259,23 @@
 <span class="lineno">42</span> 	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">Could not find symbol: runCudaTest</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">;</span>
 <span class="lineno">43</span> 	<span class="k">return</span><span class="p">;</span>
 <span class="lineno">44</span> <span class="p">}</span></code></pre></div>
-	</div>
-	</figure>
-
-	<p class="post-para">Now we can the run work function on device. If you are looking to spin off multiple kernels note that the <i>cudaDeviceSynchronize</i> function is included in the factories and should be removed if needed.</p>
-
-	<figure>
-	<figcaption><b>main.cpp</b></figcaption>
-	<div class="post-para">
-		<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="lineno">1</span> <span class="n">testFactory</span><span class="p">(</span><span class="n">loadClass</span><span class="p">);</span></code></pre></div>
-	</div>
-	</figure>
 </div>
-				
-				<div style="margin-top:25px">
-				  
-				</div>
+</figure>
 
-				
-				 <div class="social-sharing">
+<p class="post-para">Now we can the run work function on device. If you are looking to spin off multiple kernels note that the <i>cudaDeviceSynchronize</i> function is included in the factories and should be removed if needed.</p>
+
+<figure>
+<figcaption><b>main.cpp</b></figcaption>
+<div class="post-para">
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="lineno">1</span> <span class="n">testFactory</span><span class="p">(</span><span class="n">loadClass</span><span class="p">);</span></code></pre></div>
+</div>
+</figure>
+			    	</div>
+					<div class="gist-link">
+					  
+					</div>
+
+				<div class="social-sharing">
 	
 	<div class="share-button text">
 	Share
@@ -288,7 +292,7 @@
 	
 </div>
 				  
-				  
+				
 					<div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -304,12 +308,10 @@
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
      
-				  
-				  
+				
 				</div>
 			</div>
-			
-		
+		</div>
 		
 	</body>
 </html>

@@ -1,0 +1,103 @@
+.blog-header {
+text-align: center;
+margin-bottom:25px;
+}
+
+.post-header {
+
+text-align:left;
+font-size:2.0em;
+font-weight: bold;
+
+}
+
+.post-para {
+margin-bottom:25px;
+}
+
+.post-center-type
+{
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+/* Hack to get pagination to work proper. Fix this later */
+.post-preview {
+font-size: 0em;
+}
+
+.post-block {
+
+text-align: justify;
+
+}
+
+.post-link a {
+	text-decoration: none;
+}
+
+.post-body {
+	display: flex;
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+.post-catagories {
+	margin-top: 25px;
+	display: inline-flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
+
+.post-catagory {
+	max-width: 28%;
+	text-align: center;
+	color: white;
+	margin-bottom: 2%;
+	min-width: 200px;
+	border-radius: 20px;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+.blog-previews {
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+.post-img {
+	display: flex;
+	justify-content: center;
+
+}
+
+.post-img img {
+	border-width: 1px;
+	border-color: #B5B5B5;
+	border-style: double;
+	border-radius: 4px;
+	margin-bottom: 25px;
+}
+
+@media (max-width: 1000px) {
+	.blog-previews {
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+	.post-body {
+		margin-left: 5%;
+		margin-right: 5%;
+	}	
+}
+
+@media (max-width: 767px) {
+	.blog-previews {
+		margin-left: 0%;
+		margin-right: 0%;
+	}
+	.post-body {
+		margin-left: 0%;
+		margin-right: 0%;
+	}
+}

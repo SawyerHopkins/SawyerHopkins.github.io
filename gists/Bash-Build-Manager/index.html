@@ -5,7 +5,6 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-
 	<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +15,7 @@
 	<meta name="author" content="">
 	<link rel="icon" href="/favicon.ico">
 
-	<title>SawyerHopkins - Blog</title>
+	<title>Bash Build Manager</title>
 	
 <!-- Google Analytics -->
 	<script>
@@ -67,7 +66,6 @@
 	<link href="/assets/css/syntax.css" rel="stylesheet">
 	<link href="/assets/css/wells.css" rel="stylesheet">
  </head>
-
 	<body>
 		<!-- NAVBAR
 ================================================== -->
@@ -112,133 +110,89 @@
 			</div>
 		</div>
 	</div>
-		<!-- Carousel
-================================================== -->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-<!-- Indicators -->
-	<ol class="carousel-indicators">
-		
-	
-
-	
-		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-	
-	
-	
-
-	
-		<li data-target="#myCarousel" data-slide-to="1"></li>
-	
-	
-	
-
-	
-		<li data-target="#myCarousel" data-slide-to="2"></li>
-	
-	
-	
-		
-	</ol>
-	<div class="carousel-inner" role="listbox" style="background: url(/assets/img/sawyerheader.jpg) no-repeat top center fixed">
+		    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" role="listbox" style="background: url(/assets/img/sawyerheader.jpg) no-repeat top center fixed">
 	  	
-	
-		
-	
-	<div class="item active">		
-	
-		
-<!--<img src="/assets/img/sawyerheader.png" class="img-responsive">-->
-		<div class="container">
-			<div class="carousel-caption">
-				<h1><b><span class="carousel-text">Bash Build Manager</span></b></h1>
-				<p><span class="carousel-text">Using bash to manage build chains.</span></p>
-				<p><a class="btn btn-lg btn-primary" href="/blog/Bash-Build-Manager" role="button">Read Now</a></p>
-			</div>
-		</div>
-	</div>		
+		<div class="item active">		
 		
 
+          <!--<img src="/assets/img/sawyerheader.png" class="img-responsive">-->
+          <div class="container">
+            <div class="carousel-caption">
+              <h1><b><span class="carousel-text">Bash Build Manager</span></b></h1>
+              <p><span class="carousel-text">Using bash to manage build chains.</span></p>
+            </div>
+          </div>
+        </div>		
 		
-	
-	<div class="item">
-	
-		
-<!--<img src="/assets/img/sawyerheader.png" class="img-responsive">-->
-		<div class="container">
-			<div class="carousel-caption">
-				<h1><b><span class="carousel-text">Dynamic Libraries in CUDA</span></b></h1>
-				<p><span class="carousel-text">How to load CUDA dependant dynamically libraries.</span></p>
-				<p><a class="btn btn-lg btn-primary" href="/blog/Cuda-Dynamics-Libraries" role="button">Read Now</a></p>
-			</div>
-		</div>
-	</div>		
-		
-
-		
-	
-	<div class="item">
-	
-		
-<!--<img src="/assets/img/sawyerheader.png" class="img-responsive">-->
-		<div class="container">
-			<div class="carousel-caption">
-				<h1><b><span class="carousel-text">NIntegrate Plots</span></b></h1>
-				<p><span class="carousel-text">Using ListPlot to create plots for non-analytic integrals.</span></p>
-				<p><a class="btn btn-lg btn-primary" href="/blog/NIntegrate-Plots" role="button">Read Now</a></p>
-			</div>
-		</div>
-	</div>		
-		
-
-		
-</div>	
-<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-<span class="glyphicon glyphicon-chevron-left"></span>
-<span class="sr-only">Previous</span>
-</a>
-<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-<span class="glyphicon glyphicon-chevron-right"></span>
-<span class="sr-only">Next</span>
-</a>
-</div><!-- /.carousel -->
-		
+	</div>	
+    </div><!-- /.carousel -->
 		<!-- Main -->
 		<div id="main">
-			<div class="blog-previews">
-			      <!-- Intro -->
-<div class="well well-depth-1">
-	<h2 class="blog-header">Recent C++ Posts</h2>
+			<div class="well well-depth-1 post-body">
+				<div class="gist-block">
+				    <p class="gist-header">Bash Build Manager - Gist</p>
+	
+<div class="gist-para">
+<noscript><pre>#CORE
 
-	
-	<div class="well well-depth-2">
-	<h3 class="post-link"><a href="/blog/Cuda-Dynamics-Libraries">Dynamic Libraries in CUDA</a></h3>
-			
-	<p class="post-preview">Building the dynamic library.</p>
-	
-<p class="post-para">So we need to look at two pieces of code: Some class that inherits an abstract class that is to be seperatedly compiled and loaded as the dynamic library, and some main application the we want to load this library into. Normally this is a straight forward process, but since copying objects directly to device memory does not make a copy of the VTable we will need to add an extra step along the way.</p>
-	
+echo
+echo Making core library
+echo
 
+cd ClusteredCore/$1
+make
+cd ../../
 
+#END
+#FORCE
 
-	</div>	
-	
-		
-	<div class="pagination">
-	
-		<span class="pagination-button older"><i class="fa fa-long-arrow-left" style="font-size:1.5em"></i></span>
-	
-		
-	
-		<span class="pagination-button newer"><i class="fa fa-long-arrow-right" style="font-size:1.5em"></i></span>
-	
-	</div>
+echo
+echo Making %NAME%
+echo
+
+cd %NAME%/$1
+make
+cd ../../
+
+#END
+#UI
+
+echo
+echo Making user interface
+echo
+
+cd ClusteredUI/$1
+make
+make post-build
+cd ../../
+
+#END</pre></noscript><script src="https://gist.github.com/SawyerHopkins/b72a00644e16e049c5a7.js"> </script>
 </div>
-</section>
+					  
+					<div class="social-sharing">
 	
-			  
+	<div class="share-button text">
+	Share
+	</div>
+	<div class="share-button twitter">
+		<a href="https://twitter.com/home?status=/gists/Bash-Build-Manager/index.html " target="_blank"><i class="fa fa-twitter social"></i></a>
+	</div>
+	<div class="share-button linkedin">
+		<a href="http://www.linkedin.com/shareArticle?mini=true&url=/gists/Bash-Build-Manager/index.html&title=Bash Build Manager&summary=Using bash to manage build chains.&source=SawyerHopkins.com" target="_blank"><i class="fa fa-linkedin social"></i></a>
+	</div>
+	<div class="share-button gplus">
+		<a href="https://plus.google.com/share?url=/gists/Bash-Build-Manager/index.html" target="_blank"><i class="fa fa-google-plus social"></i></a>
+	</div>
+	
+</div>
+					  
+					
+				</div>
 			</div>
 		</div>
-		
 		
 	</body>
 </html>

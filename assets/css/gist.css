@@ -1,0 +1,39 @@
+.gist-header {
+	text-align:left;
+	font-size:2.0em;
+	font-weight: bold;
+	margin-bottom: 25px;
+	text-align: center;
+}
+
+.gist-para {
+	margin-bottom:25px;
+}
+
+.gist-block {
+}
+
+.gist-file {
+	border: 2px solid #B5B5B5 !important;
+	border-radius: 10px !important;
+}
+
+.gist-data {
+	border-radius: 10px !important;
+	width: 100% !important;
+}
+
+.gist-meta {
+	border-radius: 10px !important;
+}
+
+.gist-link {
+	margin-top: 25px;
+	text-align: center;
+}
+
+@media (max-width: 889px) {
+	.gist-link {
+		display: none;
+	}
+}

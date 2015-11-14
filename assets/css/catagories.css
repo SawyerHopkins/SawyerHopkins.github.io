@@ -1,0 +1,13 @@
+.cat-link {
+	text-decoration: none;
+	font-size:2.0em;
+	font-weight: bold;
+	margin-bottom:30px;
+	margin-top:30px;
+	min-width: 200px;
+}
+
+.cat-link a {
+	text-decoration: none;
+	line-height: 125%;
+}

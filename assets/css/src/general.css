@@ -1,0 +1,17 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+/* Triad Color Rule
+Button Blue: 428BCA (66,139,202)
+Text Blue: 1C517D (28,81,125)
+Red: D35F5A (211,95,90)
+Yellow: 909722 (144,151,34)
+Yellow2: 78D23 (120,125,35)
+*/
+
+
+body {
+  padding-bottom: 40px;
+  color: #5a5a5a;
+}

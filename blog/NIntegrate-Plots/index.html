@@ -5,7 +5,6 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-
 	<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,11 +53,19 @@
 <![endif]-->
 
 <!-- Custom styles for this template -->
-	<link href="/carousel.css" rel="stylesheet">
-	<link href="/post.css" rel="stylesheet">
-	<link href="/syntax.css" rel="stylesheet">
-  </head>
-
+	<link href="/assets/css/carousel.css" rel="stylesheet">
+	<link href="/assets/css/catagories.css" rel="stylesheet">
+	<link href="/assets/css/general.css" rel="stylesheet">
+	<link href="/assets/css/gist.css" rel="stylesheet">
+	<link href="/assets/css/feature.css" rel="stylesheet">
+	<link href="/assets/css/navbar.css" rel="stylesheet">
+	<link href="/assets/css/post.css" rel="stylesheet">
+	<link href="/assets/css/page.css" rel="stylesheet">
+	<link href="/assets/css/pagination.css" rel="stylesheet">
+	<link href="/assets/css/social.css" rel="stylesheet">
+	<link href="/assets/css/syntax.css" rel="stylesheet">
+	<link href="/assets/css/wells.css" rel="stylesheet">
+ </head>
 	<body>
 		<!-- NAVBAR
 ================================================== -->
@@ -122,13 +129,12 @@
 		
 	</div>	
     </div><!-- /.carousel -->
-		
 		<!-- Main -->
-			<div id="main">
-				<div class="container marketing">
-			      <div class="post-block">
-
-<p class="post-header">Wave Functions in Free Space</p>
+		<div id="main">
+			<div class="well well-depth-1 post-body">
+				<div class="post-block">
+			    	<div class="well well-depth-2">
+			    	<p class="post-header">Wave Functions in Free Space</p>
 	
 <p class="post-para">Consider a Gaussian wave packet in free space. I will use this as a simple example to demonstrate the use of NIntegrate and ListPlot in Mathematica to create plots of wave functions that are non-analytic or take longer than desired to compute analytically. Since I am using a wave packet in free space I can project the packet onto the eigenstates with a Fourier Transform. This allows me to use Mathematica's existing functions to construct a time dependant wave function.</p>
 	
@@ -143,8 +149,8 @@
 <span class="lineno">6</span> <span class="no">Plot</span><span class="o">[</span><span class="n">fstarf</span><span class="o">[</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="p">{</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">},</span> <span class="no">PlotRange</span> <span class="o">-&gt;</span> <span class="no">Full</span><span class="o">]</span></code></pre></div>
 </div>
 
-<div class="post-para">
-<img class="featurette-image img-responsive post-center-type" src="/assets/img/ListPlot/fourier_plot.png" alt="Plot using Fourier Transforms for a free wave packet.">
+<div class="post-img">
+<img src="/assets/img/ListPlot/fourier_plot.png" alt="Plot using Fourier Transforms for a free wave packet.">
 </div>
 
 <p class="post-para">However this is a special case. In general it would be necessary to project the initial wave packet onto the eigenstates manually with an appropriate integral. In this case I can plot my momentum space distribution to see that it only exists in a small range, allowing me to integrate over a smaller region of space.</p>
@@ -161,8 +167,8 @@
 <span class="lineno">9</span> <span class="no">Plot</span><span class="o">[</span><span class="n">fstarf</span><span class="o">[</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="p">{</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">},</span> <span class="no">PlotRange</span> <span class="o">-&gt;</span> <span class="no">Full</span><span class="o">]</span></code></pre></div>
 </div>
 
-<div class="post-para">
-<img class="featurette-image img-responsive post-center-type" src="/assets/img/ListPlot/momentum_plot.png" alt="Plot using Fourier Transforms for a free wave packet.">
+<div class="post-img">
+<img src="/assets/img/ListPlot/momentum_plot.png" alt="Plot using Fourier Transforms for a free wave packet.">
 </div>
 
 <p class="post-para">Sometimes simplification is not possible and a numerical approach is needed. Here this requires integrating at both a constant value of time as well as position. Since we want to construct a position space wave function we can use a table to iterate over a range of discrete positions.</p>
@@ -178,20 +184,18 @@
 <span class="lineno">8</span> <span class="no">ListPlot</span><span class="o">[</span><span class="n">points</span><span class="o">]</span></code></pre></div>
 </div>
 
-<div class="post-para">
-<img class="featurette-image img-responsive post-center-type" src="/assets/img/ListPlot/listplot.png" alt="Plot using Fourier Transforms for a free wave packet.">
+<div class="post-img">
+<img src="/assets/img/ListPlot/listplot.png" alt="Plot using Fourier Transforms for a free wave packet.">
 </div>
 
 <p class="post-para"> After using 'Table' to create an array of wave function values, we need to use it again to create an array of the corresponding positions. Using transpose we create an ordered pair which associates the probability amplitude matrix (<i>yaxis</i>) with the position matrix (<i>xaxis</i>). ListPlot will then make a discrete plot of the probability amplitude.</p>
 
-</div>
-				
-				<div style="margin-top:25px">
-				  
-				</div>
+			    	</div>
+					<div class="gist-link">
+					  
+					</div>
 
-				
-				 <div class="social-sharing">
+				<div class="social-sharing">
 	
 	<div class="share-button text">
 	Share
@@ -208,7 +212,7 @@
 	
 </div>
 				  
-				  
+				
 					<div id="disqus_thread"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -224,12 +228,10 @@
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
      
-				  
-				  
+				
 				</div>
 			</div>
-			
-		
+		</div>
 		
 	</body>
 </html>
