@@ -47,15 +47,15 @@ text-align: justify;
 	margin-top: 25px;
 	display: inline-flex;
 	flex-flow: row wrap;
-	justify-content: space-around;
+	justify-content: center;
 }
 
 .post-catagory {
-	max-width: 28%;
+	max-width: 18%;
 	text-align: center;
 	color: white;
 	margin-bottom: 2%;
-	min-width: 200px;
+	min-width: 150px;
 	border-radius: 20px;
 	margin-left: 2%;
 	margin-right: 2%;
