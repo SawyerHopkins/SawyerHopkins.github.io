@@ -203,7 +203,7 @@
 </div>
 </figure>
 
-<p class="post-header">Putting it all.</p>
+<p class="post-header">Putting it all together.</p>
 
 <p class="post-para">Now that we have all the building blocks setup we can work on the main application. Since the factories we created will spin off the kernels for us we can use dlopen as we would with any other dynamically loaded library with one caveat. Since our constructor is looking for a float array, we should pass it a pointer to an array that exists on device. We do this by created the array on the host machine and then copying it over with cudaMemcpy.</p>
 
