@@ -1,9 +1,10 @@
 <template>
   <div id="simulation">
     <svg
+      :viewBox="viewBox"
       :width="engine.size * scale"
       :height="engine.size * scale"
-      :viewBox="viewBox"
+      style="border: 1px solid rgb(51, 51, 51)"
     >
       <circle
         fill="none"
@@ -46,9 +47,9 @@
       </svg>
     </svg>
     <div class="action-buttons">
-      <button @click="simRun">Run</button>
-      <button @click="simStop">Stop</button>
-      <button @click="simReset">Reset</button>
+      <div class="btn btn-small" @click="simRun">Run</div>
+      <div class="btn btn btn-accent btn-small" @click="simStop">Stop</div>
+      <div class="btn btn btn-accent btn-small" @click="simReset">Reset</div>
     </div>
   </div>
 </template>
@@ -75,7 +76,7 @@
 
   const HISTOGRAM_MAX = 4
   const HISTOGRAM_MIN = 1
-  const HISTOGRAM_BINS = 10
+  const HISTOGRAM_BINS = 8
 
   export default {
     data() {

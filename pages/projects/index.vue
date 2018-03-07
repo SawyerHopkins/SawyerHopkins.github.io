@@ -1,17 +1,18 @@
 <template>
-  <div class="project-container">
+  <div class="project-list">
     <div class="project-item" v-for="project in projects" :key="project.id">
       <div class="project-info">
         <h6>{{ project.name }}</h6>
         <div>{{ project.lang }}</div>
       </div>
       <div class="btn"><router-link tag="div" :to="project.demo">Demo</router-link></div>
+      <a :href="project.git" target="_blank" class="btn btn-accent btn-small">Source</a>
     </div>
   </div>
 </template>
 
 <style scoped lang="stylus">
-  .project-container
+  .project-list
     display: flex
     flex-wrap: wrap
     justify-content: center

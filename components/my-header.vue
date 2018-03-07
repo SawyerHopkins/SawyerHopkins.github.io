@@ -15,6 +15,7 @@
 
 <style scoped lang="stylus">
   .header-container
+    padding-top: 15px
     text-align: center
     img
       min-width: 100px
