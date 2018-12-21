@@ -6,7 +6,7 @@
 <script>
   export default {
     mounted () {
-      this.$router.push('/education')
+      this.$router.replace('/education')
     }
   }
 </script>
