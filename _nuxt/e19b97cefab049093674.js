@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{186:function(e,n,t){"use strict";t.r(n);t(32);var i={mounted:function(){this.$router.replace("/education")}},o=t(8),u=Object(o.a)(i,function(){var e=this.$createElement;return(this._self._c||e)("section")},[],!1,null,null,null);u.options.__file="index.vue";n.default=u.exports}}]);

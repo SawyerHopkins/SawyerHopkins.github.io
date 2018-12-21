@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{191:function(e,n,t){"use strict";t.r(n);var s=t(8),c=Object(s.a)({},function(){var e=this.$createElement,n=this._self._c||e;return n("section",[n("nuxt-child")],1)},[],!1,null,null,null);c.options.__file="projects.vue";n.default=c.exports}}]);
